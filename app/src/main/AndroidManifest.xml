@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DictionaryViewActivity" />
+        <activity android:name=".WritingTermExerciseActivity"/>
     </application>
 
 </manifest>
