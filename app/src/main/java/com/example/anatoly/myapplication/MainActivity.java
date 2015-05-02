@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 showFileChooser();
                 break;
             case R.id.btn_open_dict_list_view:
-                intent = new Intent(this, ActivityTwo.class);
+                intent = new Intent(this, DictionaryViewActivity.class);
                 intent.putExtra("terms", terms);
                 startActivity(intent);
                 break;
