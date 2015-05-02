@@ -38,6 +38,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         Button btnWTExercise = (Button) findViewById(R.id.btn_writing_term_exercise);
         btnWTExercise.setOnClickListener(this);
+
+        Button btnWTExercise2 = (Button) findViewById(R.id.btn_writing_term_exercise2);
+        btnWTExercise2.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +64,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_writing_term_exercise:
                 if (isOpenDict) {
                     intent = new Intent(this, WritingTermExerciseActivity.class);
+                    intent.putExtra("terms", dictionary.toStringArray());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Please select dictionary file.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.btn_writing_term_exercise2:
+                if (isOpenDict) {
+                    intent = new Intent(this, WritingTermExerciseActivity2.class);
                     intent.putExtra("terms", dictionary.toStringArray());
                     startActivity(intent);
                 } else {
