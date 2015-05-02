@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -19,26 +18,15 @@ import java.net.URISyntaxException;
 
 public class MainActivity extends Activity {
     private static final int FILE_SELECT_CODE = 0;
-    private static final String[] values = {
-            "Android - an open-source operating system used for smartphones and tablet computers.",
-            "Google - search for information about (someone or something) on the Internet using the search engine Google."
-    };
 
     private String filePath;
-    private TextView tv;
+    private ListView lvMain;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.text_view);
-
-        ListView lvMain = (ListView) findViewById(R.id.lvMain);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, values);
-
-        lvMain.setAdapter(adapter);
+        lvMain = (ListView) findViewById(R.id.lvMain);
 
         showFileChooser();
     }
@@ -95,7 +83,11 @@ public class MainActivity extends Activity {
                     }
 
                     String text = getSdcardText();
-                    tv.setText(text);
+                    String lines[] = text.split("\\r?\\n");
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                            android.R.layout.simple_list_item_1, lines);
+                    lvMain.setAdapter(adapter);
                 }
                 break;
         }
