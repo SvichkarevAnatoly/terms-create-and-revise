@@ -2,5 +2,6 @@
     <string name="app_name">My Application</string>
 
     <string name="label_btn_select_dict_file">Select dictionary</string>
-    <string name="label_btn_open_dict_list_view">Show dictionary entries</string>
+    <string name="label_btn_dict_list_view">Show dictionary entries</string>
+    <string name="label_btn_writing_term_exercise">Writing term exercise</string>
 </resources>

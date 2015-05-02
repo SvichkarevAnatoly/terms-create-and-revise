@@ -12,10 +12,17 @@
         android:text="@string/label_btn_select_dict_file" />
 
     <Button
-        android:id="@+id/btn_open_dict_list_view"
+        android:id="@+id/btn_dict_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/label_btn_open_dict_list_view" />
+        android:text="@string/label_btn_dict_list_view" />
+
+    <Button
+        android:id="@+id/btn_writing_term_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/label_btn_writing_term_exercise" />
 
 </LinearLayout>

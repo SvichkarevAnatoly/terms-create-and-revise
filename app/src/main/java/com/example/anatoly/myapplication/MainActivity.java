@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Button btnSelectDict = (Button) findViewById(R.id.btn_select_dict_file);
         btnSelectDict.setOnClickListener(this);
 
-        Button btnShowDict = (Button) findViewById(R.id.btn_open_dict_list_view);
+        Button btnShowDict = (Button) findViewById(R.id.btn_dict_list_view);
         btnShowDict.setOnClickListener(this);
     }
 
@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 showFileChooser();
                 isOpenDict = true;
                 break;
-            case R.id.btn_open_dict_list_view:
+            case R.id.btn_dict_list_view:
                 if (isOpenDict) {
                     intent = new Intent(this, DictionaryViewActivity.class);
                     intent.putExtra("terms", dictionary.toStringArray());
