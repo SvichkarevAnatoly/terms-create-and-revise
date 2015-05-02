@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class MainActivity extends Activity {
-    private static final String TAG = "terms";
     private static final int FILE_SELECT_CODE = 0;
     private static final String[] values = {
             "Android - an open-source operating system used for smartphones and tablet computers.",
@@ -88,18 +86,14 @@ public class MainActivity extends Activity {
                 if (resultCode == RESULT_OK) {
                     // Get the Uri of the selected file
                     Uri uri = data.getData();
-                    Log.d(TAG, "File Uri: " + uri.toString());
 
                     // Get the path
-                    String path = null;
                     try {
-                        path = getPath(this, uri);
+                        filePath = getPath(this, uri);
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
 
-                    Log.d(TAG, "File Path: " + path);
-                    filePath = path;
                     String text = getSdcardText();
                     tv.setText(text);
                 }
