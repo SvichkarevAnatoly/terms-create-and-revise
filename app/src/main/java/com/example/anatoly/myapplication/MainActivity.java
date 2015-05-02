@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -16,39 +16,36 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
     private static final int FILE_SELECT_CODE = 0;
 
+    private String terms[];
     private String filePath;
-    private ListView lvMain;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lvMain = (ListView) findViewById(R.id.lvMain);
+        Button btnSelectDict = (Button) findViewById(R.id.btn_select_dict_file);
+        btnSelectDict.setOnClickListener(this);
 
-        showFileChooser();
+        Button btnShowDict = (Button) findViewById(R.id.btn_open_dict_list_view);
+        btnShowDict.setOnClickListener(this);
     }
 
-    private String getSdcardText() {
-        File file = new File(filePath);
-
-        StringBuilder text = new StringBuilder();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.btn_select_dict_file:
+                showFileChooser();
+                break;
+            case R.id.btn_open_dict_list_view:
+                intent = new Intent(this, ActivityTwo.class);
+                intent.putExtra("terms", terms);
+                startActivity(intent);
+                break;
         }
-
-        return text.toString();
     }
 
     private void showFileChooser() {
@@ -83,15 +80,31 @@ public class MainActivity extends Activity {
                     }
 
                     String text = getSdcardText();
-                    String lines[] = text.split("\\r?\\n");
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                            android.R.layout.simple_list_item_1, lines);
-                    lvMain.setAdapter(adapter);
+                    terms = text.split("\\r?\\n");
                 }
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private String getSdcardText() {
+        File file = new File(filePath);
+
+        StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return text.toString();
     }
 
     public static String getPath(Context context, Uri uri) throws URISyntaxException {
