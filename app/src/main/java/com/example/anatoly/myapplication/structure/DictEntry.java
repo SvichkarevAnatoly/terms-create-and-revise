@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication;
+package com.example.anatoly.myapplication.structure;
 
 public class DictEntry {
     private String term;

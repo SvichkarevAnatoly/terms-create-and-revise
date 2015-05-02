@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication;
+package com.example.anatoly.myapplication.structure;
 
 import java.util.ArrayList;
 import java.util.List;

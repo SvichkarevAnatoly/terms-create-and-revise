@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.anatoly.myapplication.structure.Dictionary;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
