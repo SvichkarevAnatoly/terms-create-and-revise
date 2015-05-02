@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private String filePath;
     private boolean isOpenDict = false;
 
-    private String terms[];
+    private Dictionary dictionary = new Dictionary();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_open_dict_list_view:
                 if (isOpenDict) {
                     intent = new Intent(this, DictionaryViewActivity.class);
-                    intent.putExtra("terms", terms);
+                    intent.putExtra("terms", dictionary.toStringArray());
                     startActivity(intent);
                 } else {
                     Toast.makeText(this, "Please select dictionary file.",
@@ -87,32 +87,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         e.printStackTrace();
                     }
 
-                    String text = getTextFromFile();
-                    terms = text.split("\\r?\\n");
+                    fillDictionaryFromFile();
                 }
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private String getTextFromFile() {
+    private void fillDictionaryFromFile() {
         File file = new File(filePath);
 
-        StringBuilder text = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
 
             while ((line = br.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
+                dictionary.add(line);
             }
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return text.toString();
     }
 
     public static String getPath(Context context, Uri uri) throws URISyntaxException {
