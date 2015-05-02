@@ -1,21 +1,21 @@
 package com.example.anatoly.myapplication.structure;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Dictionary {
+public class Dictionary implements Iterable {
     private List<DictEntry> dictionary;
-
-    public Dictionary(List<DictEntry> dictionary) {
-        this.dictionary = dictionary;
-    }
 
     public Dictionary() {
         dictionary = new ArrayList<>();
     }
 
-    public void add(DictEntry dictEntry) {
-        dictionary.add(dictEntry);
+    public Dictionary(String[] termDefinitions) {
+        dictionary = new ArrayList<>();
+        for (String termDefinition : termDefinitions) {
+            add(termDefinition);
+        }
     }
 
     public void add(String dictEntryStr) {
@@ -32,5 +32,10 @@ public class Dictionary {
         }
 
         return terms;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return dictionary.iterator();
     }
 }
