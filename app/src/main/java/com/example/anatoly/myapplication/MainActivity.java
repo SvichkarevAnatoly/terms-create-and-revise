@@ -19,8 +19,10 @@ import java.net.URISyntaxException;
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final int FILE_SELECT_CODE = 0;
 
-    private String terms[];
     private String filePath;
+    private boolean isOpenDict = false;
+
+    private String terms[];
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +41,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_select_dict_file:
                 showFileChooser();
+                isOpenDict = true;
                 break;
             case R.id.btn_open_dict_list_view:
-                intent = new Intent(this, DictionaryViewActivity.class);
-                intent.putExtra("terms", terms);
-                startActivity(intent);
+                if (isOpenDict) {
+                    intent = new Intent(this, DictionaryViewActivity.class);
+                    intent.putExtra("terms", terms);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Please select dictionary file.",
+                            Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -79,7 +87,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         e.printStackTrace();
                     }
 
-                    String text = getSdcardText();
+                    String text = getTextFromFile();
                     terms = text.split("\\r?\\n");
                 }
                 break;
@@ -87,7 +95,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private String getSdcardText() {
+    private String getTextFromFile() {
         File file = new File(filePath);
 
         StringBuilder text = new StringBuilder();
