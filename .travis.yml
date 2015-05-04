@@ -1,7 +1,5 @@
 language: android
-
-jdk:
-  - openjdk7
+jdk: oraclejdk7
 
 script:
   - ./gradlew clean assembleDebug
