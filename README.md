@@ -1,3 +1,5 @@
+[![Build Status](https://magnum.travis-ci.com/SvichkarevAnatoly/terms-create-and-revise.svg?token=duFWAk9EfqjgLZcxEyT7&branch=master)](https://magnum.travis-ci.com/SvichkarevAnatoly/terms-create-and-revise)
+
 # terms-create-and-revise
 Android app for creating your vocabularies with terms and practising them.
 
