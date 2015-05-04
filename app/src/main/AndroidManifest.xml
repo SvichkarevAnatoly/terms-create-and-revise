@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".DictionaryViewActivity" />
         <activity android:name=".WritingTermExerciseActivity"/>
-        <activity android:name=".WritingTermExerciseActivity2"/>
     </application>
 
 </manifest>
