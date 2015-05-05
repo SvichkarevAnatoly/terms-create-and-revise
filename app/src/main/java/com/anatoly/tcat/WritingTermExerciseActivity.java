@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication;
+package com.anatoly.tcat;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.anatoly.myapplication.structure.DictEntry;
-import com.example.anatoly.myapplication.structure.Dictionary;
+import com.anatoly.tcat.structure.DictEntry;
+import com.anatoly.tcat.structure.Dictionary;
 
 import java.util.Iterator;
 

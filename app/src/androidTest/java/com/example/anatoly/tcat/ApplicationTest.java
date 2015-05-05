@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication;
+package com.example.anatoly.tcat;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

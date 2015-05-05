@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication.structure;
+package com.anatoly.tcat.structure;
 
 import java.util.ArrayList;
 import java.util.Iterator;

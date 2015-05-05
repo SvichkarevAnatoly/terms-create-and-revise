@@ -1,4 +1,4 @@
-package com.example.anatoly.myapplication;
+package com.anatoly.tcat;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.anatoly.myapplication.structure.Dictionary;
+import com.anatoly.tcat.structure.Dictionary;
 
 import java.io.BufferedReader;
 import java.io.File;

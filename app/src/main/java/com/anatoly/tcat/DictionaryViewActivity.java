@@ -1,10 +1,9 @@
-package com.example.anatoly.myapplication;
+package com.anatoly.tcat;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 
 public class DictionaryViewActivity extends Activity {
     @Override
