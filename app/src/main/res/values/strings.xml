@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Terms Create &amp; Train</string>
 
     <string name="label_btn_select_dict_file">Select dictionary</string>
     <string name="label_btn_dict_list_view">Show dictionary entries</string>
