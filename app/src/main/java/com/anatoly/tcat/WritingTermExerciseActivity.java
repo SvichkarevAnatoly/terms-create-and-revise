@@ -17,6 +17,7 @@ import java.util.Iterator;
 public class WritingTermExerciseActivity extends Activity implements View.OnClickListener {
     private EditText etTerm;
     private TextView tvDefinition;
+    private Button btnNext;
 
     private Iterator dictIterator;
     private String correctTerm;
@@ -29,7 +30,7 @@ public class WritingTermExerciseActivity extends Activity implements View.OnClic
         etTerm = (EditText) findViewById(R.id.et_wte_term);
         tvDefinition = (TextView) findViewById(R.id.tv_wte_definition);
 
-        final Button btnNext = (Button) findViewById(R.id.btn_wte_next);
+        btnNext = (Button) findViewById(R.id.btn_wte_next);
         btnNext.setOnClickListener(this);
 
         final Intent intent = getIntent();
@@ -66,6 +67,10 @@ public class WritingTermExerciseActivity extends Activity implements View.OnClic
             correctTerm = dictEntry.getTerm();
             tvDefinition.setText(dictEntry.getDefinition());
         } else {
+            etTerm.setVisibility(View.GONE);
+            btnNext.setEnabled(false);
+            tvDefinition.setText("");
+
             Toast.makeText(
                     this, "Dictionary end",
                     Toast.LENGTH_SHORT).show();
