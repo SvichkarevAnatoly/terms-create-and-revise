@@ -1,6 +1,7 @@
 package com.anatoly.tcat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,21 +32,19 @@ public class WritingTermExerciseActivity extends Activity implements View.OnClic
         final Button btnNext = (Button) findViewById(R.id.btn_wte_next);
         btnNext.setOnClickListener(this);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String[] termDefinitions = extras.getStringArray("terms");
-            final Dictionary dictionary = new Dictionary(termDefinitions);
-            dictIterator = dictionary.iterator();
+        final Intent intent = getIntent();
+        final Dictionary dictionary = intent.getParcelableExtra("terms");
+        dictIterator = dictionary.iterator();
 
-            if (dictIterator.hasNext()) {
-                final DictEntry dictEntry = (DictEntry) dictIterator.next();
+        if (dictIterator.hasNext()) {
+            final DictEntry dictEntry = (DictEntry) dictIterator.next();
 
-                correctTerm = dictEntry.getTerm();
-                tvDefinition.setText(dictEntry.getDefinition());
-            } else {
-                Toast.makeText(this, "Dictionary end",
-                        Toast.LENGTH_SHORT).show();
-            }
+            correctTerm = dictEntry.getTerm();
+            tvDefinition.setText(dictEntry.getDefinition());
+        } else {
+            Toast.makeText(
+                    this, "Dictionary end",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -53,7 +52,8 @@ public class WritingTermExerciseActivity extends Activity implements View.OnClic
     public void onClick(View v) {
         final String fieldText = etTerm.getText().toString().trim();
         if (!fieldText.equals(correctTerm)) {
-            Toast.makeText(this, "Not equals",
+            Toast.makeText(
+                    this, "Not equals",
                     Toast.LENGTH_SHORT).show();
             return;
         } else {
@@ -66,7 +66,8 @@ public class WritingTermExerciseActivity extends Activity implements View.OnClic
             correctTerm = dictEntry.getTerm();
             tvDefinition.setText(dictEntry.getDefinition());
         } else {
-            Toast.makeText(this, "Dictionary end",
+            Toast.makeText(
+                    this, "Dictionary end",
                     Toast.LENGTH_SHORT).show();
         }
     }

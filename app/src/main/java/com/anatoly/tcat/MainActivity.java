@@ -74,7 +74,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     intent = new Intent(
                             this,
                             WritingTermExerciseActivity.class);
-                    intent.putExtra("terms", dictionary.toStringArray());
+                    intent.putExtra("terms", dictionary);
                     startActivity(intent);
                 } else {
                     Toast.makeText(
