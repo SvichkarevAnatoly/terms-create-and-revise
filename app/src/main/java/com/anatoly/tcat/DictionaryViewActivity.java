@@ -1,9 +1,12 @@
 package com.anatoly.tcat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.anatoly.tcat.structure.Dictionary;
 
 public class DictionaryViewActivity extends Activity {
     @Override
@@ -13,12 +16,13 @@ public class DictionaryViewActivity extends Activity {
 
         ListView listView = (ListView) findViewById(R.id.lvMain);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String[] terms = extras.getStringArray("terms");
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, terms);
-            listView.setAdapter(adapter);
-        }
+        final Intent intent = getIntent();
+        Dictionary dictionary = intent.getParcelableExtra("terms");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                dictionary.toStringArray());
+        listView.setAdapter(adapter);
     }
 }

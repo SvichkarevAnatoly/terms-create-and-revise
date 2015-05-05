@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_dict_list_view:
                 if (isOpenDict) {
                     intent = new Intent(this, DictionaryViewActivity.class);
-                    intent.putExtra("terms", dictionary.toStringArray());
+                    intent.putExtra("terms", dictionary);
                     startActivity(intent);
                 } else {
                     Toast.makeText(
