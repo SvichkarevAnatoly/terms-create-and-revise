@@ -25,6 +25,10 @@ public class Dictionary implements Iterable, Parcelable {
         this.dictionary = parcel.readArrayList(DictEntry.class.getClassLoader());
     }
 
+    public void add(DictEntry dictEntry) {
+        dictionary.add(dictEntry);
+    }
+
     public void add(String dictEntryStr) {
         final DictEntry dictEntry = DictEntry.parse(dictEntryStr);
         dictionary.add(dictEntry);
@@ -68,4 +72,8 @@ public class Dictionary implements Iterable, Parcelable {
         }
 
     };
+
+    public boolean contains(DictEntry dictEntry) {
+        return dictionary.contains(dictEntry);
+    }
 }

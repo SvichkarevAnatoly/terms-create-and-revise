@@ -3,6 +3,12 @@
 
     <string name="label_btn_select_dict_file">Select dictionary</string>
     <string name="label_btn_dict_list_view">Show dictionary entries</string>
+    <string name="label_btn_add_entry_view">Add term entry</string>
     <string name="label_btn_writing_term_exercise">Writing term exercise</string>
+
     <string name="label_btn_wte_next">Next term</string>
+
+    <string name="tv_term">Term:</string>
+    <string name="tv_definition">Definition:</string>
+    <string name="label_btn_add_entry_to_dict">Add</string>
 </resources>

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.anatoly.tcat.DictionaryViewActivity" />
+        <activity android:name="com.anatoly.tcat.AddEntryActivity"/>
         <activity android:name="com.anatoly.tcat.WritingTermExerciseActivity"/>
     </application>
 

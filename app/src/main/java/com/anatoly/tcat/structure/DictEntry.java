@@ -20,7 +20,7 @@ public class DictEntry implements Parcelable {
     public static DictEntry parse(String termDefinition){
         final String[] split = termDefinition.split("--");
         if (split.length != 2){
-            throw new IllegalArgumentException("Term definition must contain '--'");
+            throw new IllegalArgumentException("Term definition must contains '--'");
         }
 
         final String term = split[0].trim();
